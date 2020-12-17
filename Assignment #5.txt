@@ -1,0 +1,157 @@
+
+
+Objectives:
+    This lab is to learn the binary search tree (and generic data type). 
+
+Specification: 
+    Construct a C++ program to build a binary search tree which stores generic data in order. 
+    Your program should satisfy the following constraints:
+    - Must use the linked list implementation for the Binary_Search_Tree ADT (class).
+    - Must use the 'template' construct to allow generic data type (integer, character, 
+	string, ..). 
+    - Must use the pointers and dynamically allocated nodes to keep items (nodes). 
+    - Must have 2 (binary) pointers (to point to Left and Right) in each node. 
+    - Must consist of at least 2 header files (*.h), at least 2 implementation files (*.cpp)
+	and 1 driver file (tree_Dr.cpp) that includes a main function. 
+    - Must use at least 2 'class' constructs and must use 2 or more instances
+	instantiated from the classes defined. 
+    - Must use at least 1 'namespace' construct. 
+    - The maximum number of items (names or numbers) (max size of tree) is 100. 
+	Otherwise give a warning message. 
+    - The maximum size of a name item is 10 characters. Otherwise give a warning message. 
+    - The range of a number item is 1 - 100. Otherwise, give a warning message. 
+    - Each function and variable must have comment (within 1 - 10 lines of comments). 
+    - Each function must have both pre-condition and post-condition in the comment section. 
+
+Process: 
+    Process all until (no-more-input). 
+    	Read input (name string, integer, character) one by one, follow the command 
+	(insert/delete). 
+
+	If 'Insert', insert the item into the sorted binary search tree, in ascending order.
+
+	If 'Delete': (be careful) 
+	If the node to be deleted does not have children, simply delete it.
+	If the node to be deleted has only one (either L or R) child (or a big tree rooted 
+	  by one L or R child node), then simply let its parent to connect to its grandchild. 
+	If the node to be deleted has both L and R childern: (more complex) 
+	  Replace the infomation of the node to be deleted with the information of the 
+	  logical-predecessor (that is the node whoes key is closest in value to, 
+	  but less than, the key of the node to be deleted), and then delete that node 
+	  (logical predecessor). 
+
+	Be careful here. One more check you need. Before you delete that node (logical-pred): 
+	If the logical predecessor has no child, simply delete it. 
+	If the logical predecessor has a left child, move its left child to the position of 
+	the node to be deleted. 
+	If the logical precessor has a right tree, ... do not worry, this case never happens.
+	(Why never happens? Think!) 
+	Do not forget de-allocating memory spaces deleted. 
+	(See the textbook's example; especially in p.493 - 498 for deletion) 
+
+	Show all intermediate tree items while building/modifying the binary tree 
+	by pre-order/in-order/post-order traversing (like the example output below). 
+   	Also print pointers (addresses of Left, Self, Right) of all items in the tree. 
+	(More details will be discussed in the class.) 
+ 
+    You may use some part of the example programs shown in the textbook or references. 
+	However, you must understand every line of the code you submit. 
+
+    Use the given input and use the same output format.
+    However, test your program with other input data sets (and different data types, at least
+	integer, character, string) also. 
+    When grading, different data sets (with different data types) can be also tested. 
+
+    Before you start programming, draw the binary search tree 'manually'. 
+	- Draw the binary tree 'manually (using a pen and a paper)' to show 'step-by-step'
+	  how the binary tree is constructed with each input data (like the output below).
+    While you run your program, find and write down the address of each node in the drawing.
+	- Compare your drawing with the computer outputs. 
+	- Keep and submit the hand-drawn diagrams. 
+
+Input:  Unsorted random input data from a file (use the following test data).  
+Output: Output should look like the followings (Use the same output format). 
+	(Produce the same output to both the screen and the output file.)
+
+Input: (1st Test Data - Character Type) 
+	(input file name: test1.in) 
+	Insert D
+	Insert A 
+	Insert B
+	Delete B 
+	Insert B 
+	Insert C
+	Insert F
+ 	Insert G
+	Insert E
+	Insert H
+	Delete F
+	Insert F 
+
+Output: (for the 1st Test Data) 
+	(output file name: test1.out)
+	-- CPSC 131: Lab#4: Binary Search Tree -- 
+	-- 1 --
+	Insert: D
+	Pre-order: D (Address_of_Left, Address_of_This_Node, Address_of_Right)  
+	In-order: D (NULL, 2020, NULL) 
+	Post-order: D (NULL, 2020, NULL) 
+
+	-- 2 --
+	Insert: A
+	Pre-order: D (EE00, 2020, NULL), A
+	In-order: A (NULL, EE00, NULL), D (EE00, 2020, NULL) 
+	Post-order: A (NULL, EE00, NULL), D (EE00, 2020, NULL)  
+
+	-- 3 --
+
+	... (insert/delete/print in the similar way) ... 
+
+	-- The End of CPSC 131 Lab#4 --                
+
+Input: (2nd Test Data - Integer Type) 
+	(input file name: test2.in) 
+	Insert 2 
+	Insert 1
+	Insert 3
+	Insert 4
+	Delete 1
+	Delete 2 
+	Insert 7 
+	Insert 6 
+	Delete 3
+	Insert 2
+	Insert 1
+ 	Insert 3 
+	Insert 5
+	Delete 4 
+	Insert 8 
+	Insert 4 
+
+Output: (for the 2nd Test Data)
+	(output file name: test2.out)
+	... similar output ...
+
+
+Input: (3rd Test Data - String Type) 
+	(input file name: test3.in) 
+	Insert Frid 
+	Insert Gabriel 
+	Insert Bob 
+	Insert Dainel 
+	Insert Ariel 
+	Insert Cathy 
+	Delete Frid 
+	Insert Emily 
+	Insert Hailey 
+	Delete Daniel 
+	Insert Daniel 
+	Delete Gabriel 
+	Insert Frid 
+	Insert Gabriel 	
+
+Output: (for the 3rd Test Data)
+	(output file name: test3.out)
+	... similar output ...
+
+
